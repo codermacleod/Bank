@@ -34,10 +34,10 @@ public class BankAccount {
         }
     }
 
-    public String generateStatement() {
-        String statement = "";
-        statement += "";
-        System.out.printf("%-15s %-10s %-10s %-10s\n", "Date", "Credit", "Debit", "Balance");
+    public StringBuilder generateStatement() {
+        StringBuilder statement = new StringBuilder();
+        statement.append(String.format("%-15s %-10s %-10s %-10s\n", "Date", "Credit", "Debit", "Balance"));
+//        System.out.printf("%-15s %-10s %-10s %-10s\n", "Date", "Credit", "Debit", "Balance");
         int credit = 0;
         int debit = 0;
         for (Transaction t : transactions) {
@@ -49,9 +49,7 @@ public class BankAccount {
                 credit = 0;
                 balance -= debit;
             }
-
-//            statement += t.date + "\t" + t.amount + "\t" + balance + "\n";
-            System.out.printf("%-15s %-10s %-10s %-10s\n", t.date, credit, debit, balance);
+            statement.append(String.format("%-15s %-10s %-10s %-10s\n", t.date, credit, debit, balance));
         }
         return statement;
 
