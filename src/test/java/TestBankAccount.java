@@ -30,11 +30,7 @@ public class TestBankAccount {
         BankAccount bankAccount = new BankAccount();
         bankAccount.deposit(100, LocalDate.now());
         bankAccount.withdraw(50, LocalDate.now());
-        StringBuilder expectedStatement = new StringBuilder();
-        expectedStatement.append(String.format(
-                "%-15s %-10s %-10s %-10s\n", "Date", "Credit", "Debit", "Balance    \n"+
-                        LocalDate.now()+"      100        0          100       \n"+
-                        LocalDate.now()+"      0          50         50        \n"));
+        String expectedStatement = String.format("%-15s %-10s %-10s %-10s\n", "Date", "Credit", "Debit", "Balance   \n"+LocalDate.now()+"      100        0          100       \n"+LocalDate.now()+"      0          50         50        ");
         assertEquals(expectedStatement, bankAccount.generateStatement());
     }
 
